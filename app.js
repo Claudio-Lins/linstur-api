@@ -1,13 +1,15 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const app = express();
+
 
 require('./models/kms')
 const Kms = mongoose.model('Kms')
 
+const app = express();
 
+app.use(express.json())
 
-mongoose.connect('mongodb+srv://clins:Deca0147@cluster0.zwsrt.mongodb.net/test', {
+mongoose.connect('mongodb+srv://clins:Deca0147@cluster0.zwsrt.mongodb.net/linstur', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 }).then(() => {
@@ -32,13 +34,13 @@ app.post("/kms", (req, res) => {
   })
   return res.json({
     error: false,
-    mensage: 'Erro: Conteudo da página KMs cadastrado com Sucesso!'
+    mensage: 'Conteudo da página KMs cadastrado com Sucesso!'
   })
 })
 
 app.listen(8080, () => {
   console.log(
-    'Servidor Iniciado na porta 8080: http://localhost"8080 com Sucesso!'
+    'Servidor Iniciado na porta 8080: http://localhost:8080 com Sucesso!'
   );
 });
 
