@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors')
 
 
 require('./models/kms')
@@ -7,7 +8,13 @@ const Kms = mongoose.model('Kms')
 
 const app = express();
 
-app.use(express.json())
+app.use(express.json());
+
+app.use((req, res, next) => {
+  app.use(cors());
+  next();
+})
+
 
 mongoose.connect('mongodb+srv://clins:Deca0147@cluster0.zwsrt.mongodb.net/linstur', {
   useNewUrlParser: true,
@@ -19,10 +26,14 @@ mongoose.connect('mongodb+srv://clins:Deca0147@cluster0.zwsrt.mongodb.net/linstu
 })
 
 app.get("/kms", (req, res) => {
-  return res.json({
-    error: false,
-    mensage: "Info Pg Kms",
-  });
+  Kms.findOne({}).then((kms) => {
+    return res.json(kms);
+  }).catch((err) => {
+    return res.status(400).json({
+      error: true,
+      mensage: "Menhum Kms encontrado",
+    });
+  })
 });
 
 app.post("/kms", (req, res) => {
