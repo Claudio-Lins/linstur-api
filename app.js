@@ -19,7 +19,7 @@ app.use((req, res, next) => {
 })
 
 
-mongoose.connect('mongodb+srv://clins:Deca0147@cluster0.zwsrt.mongodb.net/linstur', {
+mongoose.connect('mongodb+srv://clins:linstur-db@cluster0.zwsrt.mongodb.net/linstur', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 }).then(() => {
