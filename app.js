@@ -28,7 +28,7 @@ mongoose.connect('mongodb+srv://clins:linstur-db@cluster0.zwsrt.mongodb.net/lins
   console.log('Error: Conexão com MongoDB não realizada ' + erro)
 })
 
-app.get("/kms", (req, res) => {
+app.get("/resumo", (req, res) => {
   Kms.findOne({}).then((kms) => {
     return res.json(kms);
   }).catch((err) => {
@@ -39,7 +39,7 @@ app.get("/kms", (req, res) => {
   })
 });
 
-app.post("/kms", (req, res) => {
+app.post("/resumo", (req, res) => {
   Kms.create(req.body, (err) => {
     if(err) return res.status(400).json({
       error:true,
@@ -57,5 +57,3 @@ app.listen(8080, () => {
     'Servidor Iniciado na porta 8080: http://localhost:8080 com Sucesso!'
   );
 });
-
-//mongodb+srv://clins:Deca0147@cluster0.zwsrt.mongodb.net/test'
