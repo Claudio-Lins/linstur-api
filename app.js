@@ -34,7 +34,7 @@ app.get("/resumo", (req, res) => {
   }).catch((err) => {
     return res.status(400).json({
       error: true,
-      mensage: "Menhum Kms encontrado",
+      mensage: "Nenhum Kms encontrado",
     });
   })
 });

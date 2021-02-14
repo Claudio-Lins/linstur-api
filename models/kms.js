@@ -9,6 +9,7 @@ const kms = new Schema(
     kmFim: {
       type: Number,
     },
+    
   },
   {
     timestamps: true,
